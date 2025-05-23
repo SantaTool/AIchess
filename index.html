@@ -117,5 +117,18 @@
   <script src="lib/chessboardjs/js/chess.js"></script>
   <script src="lib/chessboardjs/js/chessboard-0.3.0.js"></script>
   <script src="script.js"></script>
+  <script>
+  $(document).ready(function () {
+    $('#instructionsBtn').click(function () {
+      $('#instructions').slideToggle();      // Toggle visibility of instructions
+      $('#history').slideUp();               // Hide history if it's open
+    });
+
+    $('#historyBtn').click(function () {
+      $('#history').slideToggle();           // Toggle visibility of history
+      $('#instructions').slideUp();          // Hide instructions if it's open
+    });
+  });
+</script>
 </body>
 </html>
