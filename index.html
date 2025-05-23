@@ -16,11 +16,15 @@
     <!-- 🔹 Control Buttons (Moved to Top) -->
     <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
       <button id="newGameBtn" class="btn btn-primary">New Game</button>
-      <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen" aria-label="Full Screen">
-        <span id="fullscreenIcon">⛶</span>
-      </button>
-      <button id="historyBtn" class="btn btn-secondary">History</button>
-      <button id="instructionsBtn" class="btn btn-info">Instructions</button>
+      <select id="themeSelect" class="form-select w-auto">
+            <option value="default">Default Theme</option>
+            <option value="dark">Dark Theme</option>
+            <option value="blue">Blue Theme</option>
+            <option value="green">Green Theme</option>
+            <option value="pink">Pink Theme</option>
+            <option value="classic">Classic Theme</option>
+          </select>
+          <button id="audioBtn" class="btn btn-warning btn-icon" title="Mute/Unmute Audio"><span id="audioIcon">🔊</span></button>
     </div>
 
     <!-- 🔹 Chess Board -->
@@ -44,6 +48,11 @@
     </div>
 
     <main class="d-flex flex-column align-items-center">
+      <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
+        <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen"><span id="fullscreenIcon">⛶</span></button>
+        <button id="historyBtn" class="btn btn-secondary">History</button>
+        <button id="instructionsBtn" class="btn btn-info">Instructions</button>
+        </div>      
       <div id="history" class="alert alert-secondary w-100" style="display:none; max-width: 600px; text-align: left;">
         <strong>History of Chess:</strong><br />
         - Chess originated in northern India in the 6th century as "chaturanga".<br />
