@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Play free online chess with AI. Learn history and rules of chess.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="lib/chessboardjs/css/chessboard-0.3.0.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -30,7 +31,9 @@
     <div id="move-history" class="move-history">
     </div>
 </div>
-    <div class="d-flex justify-content-center align-items-center gap-2 mt-3 flex-wrap">
+    <main class="col-12 col-md-8 d-flex flex-column align-items-center">
+        <div class="mb-3 d-flex gap-2 flex-wrap">
+    <!--<div class="d-flex justify-content-center align-items-center gap-2 mt-3 flex-wrap">-->
         <button id="newGameBtn" class="btn btn-primary">New Game</button>
         <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen"><span id="fullscreenIcon">⛶</span></button>
         <button id="historyBtn" class="btn btn-secondary">History</button>
@@ -98,11 +101,14 @@
   <footer class="bg-dark text-white text-center py-2 mt-4 position-relative">
   <div style="text-align: center;">
     <span>&copy; Play Free Online Games | Board games free</span><br>
-    <span>Please feel free to write a feedback: <a href="mailto:kaus130dbn@gmail.com" class="text-info">kaus130dbn@gmail.com</a></span>
-    <div class="ad-space ad-footer">
-      <!-- Footer Ad -->
-    </div>
-  </footer>
+    <span>Please feel free to write a feedback: 
+      <a href="mailto:kaus130dbn@gmail.com" class="text-info">kaus130dbn@gmail.com</a>
+    </span>
+  </div>
+  <div class="ad-space ad-footer">
+    <!-- Footer Ad -->
+  </div>
+</footer>
 <script src="lib/jquery/jquery-3.2.1.min.js"></script>
 <script src="lib/chessboardjs/js/chess.js"></script>
 <script src="lib/chessboardjs/js/chessboard-0.3.0.js"></script>
