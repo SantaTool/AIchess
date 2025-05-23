@@ -5,8 +5,8 @@ This is a web-based chess game that allows you to play against an AI opponent th
 - Chess.js library for chess logic
 - Chessboard.js library for rendering the chessboard  
 
-## demo
-[https://alaesahbou.github.io/chessAI](https://alaesahbou.github.io/chessAI)
+## Demonstration
+[https://santatool.github.io/AIchess](https://santatool.github.io/AIchess)
 
 ## How to play
 To play the game, simply open the index.html file in a web browser. The chessboard will be displayed, and you can make moves by clicking on a piece and then clicking on the square where you want to move it. The AI opponent will then make its move, and the game will continue until checkmate, stalemate, or a draw occurs.
