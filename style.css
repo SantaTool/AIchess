@@ -1,0 +1,26 @@
+.board {
+    width: 400px;
+    margin: auto
+}
+
+.info {
+    width: 400px;
+    margin: auto;
+}
+
+.move-history {
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+/* Ensure chess piece images are always visible */
+.piece-417db, .board-b72b1 img {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: opacity 0.2s;
+    z-index: 10;
+}
+.board-b72b1 img[style*="display: none"] {
+    display: block !important;
+    opacity: 0 !important;
+}
