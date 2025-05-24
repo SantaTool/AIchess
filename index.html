@@ -127,49 +127,26 @@
   <script src="lib/chessboardjs/js/chessboard-0.3.0.js"></script>
   <script src="script.js"></script>
   <script>
-  window.onload = () => {
-  renderBoard();
-  updateStatus();
-  document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
-  document.getElementById('newGameBtn').onclick = () => {
-    board = JSON.parse(JSON.stringify(initialBoard));
-    selected = null;
-    currentPlayer = "white";
-    castlingRights = {white: {kingside: true, queenside: true}, black: {kingside: true, queenside: true}};
-    enPassantTarget = null;
-    renderBoard();
-    updateStatus();
-    playSound(newGameSound);
-  };
-  document.getElementById('audioBtn').onclick = () => {
-    audioMuted = !audioMuted;
-    document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
-    document.getElementById('audioBtn').onclick = () => {
-      audioMuted = !audioMuted;
-      document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
-      document.getElementById('audioBtn').title = audioMuted ? 'Unmute Audio' : 'Mute Audio';
-    };    
-    document.getElementById('audioBtn').title = audioMuted ? 'Unmute Audio' : 'Mute Audio';
-  };
-  document.getElementById('fullscreenBtn').onclick = () => {
-    const elem = document.documentElement;
-    if (!document.fullscreenElement) {
-      elem.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  };
-  document.getElementById('themeSelect').onchange = (e) => {
-    setTheme(e.target.value);
-  };
-  document.getElementById('instructionsBtn').onclick = () => {
-    const instr = document.getElementById('instructions');
-    instr.style.display = instr.style.display === 'none' ? 'block' : 'none';
-  };
-  document.getElementById('historyBtn').onclick = () => {
-    const hist = document.getElementById('history');
-    hist.style.display = hist.style.display === 'none' ? 'block' : 'none';
-  };
+  $(document).ready(function () {
+    $('#instructionsBtn').click(function () {
+      $('#instructions').slideToggle();      // Toggle visibility of instructions
+      $('#history').slideUp();               // Hide history if it's open
+    });
+
+    $('#historyBtn').click(function () {
+      $('#history').slideToggle();           // Toggle visibility of history
+      $('#instructions').slideUp();          // Hide instructions if it's open
+    });
+  });
+
+    document.getElementById('fullscreenBtn').onclick = () => {
+  const elem = document.documentElement;
+  const icon = document.getElementById('fullscreenIcon');
+  if (!document.fullscreenElement) {
+    elem.requestFullscreen().then(() => icon.textContent = '🡽');
+  } else {
+    document.exitFullscreen().then(() => icon.textContent = '⛶');
+  }
 };
 </script>
 <script>
@@ -312,6 +289,6 @@ window.onload = () => {
     if (hist.style.display === 'block') instr.style.display = 'none';
   };
 };
-</script>  
+</script>
 </body>
 </html>
