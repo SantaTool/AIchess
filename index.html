@@ -20,18 +20,6 @@
   <!--<div class="container my-4">-->
     <!-- 🔹 Header Title -->
     <!--<h2 class="text-center mb-3">Play Online Chess Game Against AI Opponent</h2>-->
-        
-    <!-- 🔹 Control Buttons (Moved to Top) -->
-    <div class="mt-4 mb-3 d-flex justify-content-center gap-2 flex-wrap">
-      <select id="themeSelect" class="form-select w-auto">
-            <option value="default">Default Theme</option>
-            <option value="dark">Dark Theme</option>
-            <option value="blue">Blue Theme</option>
-            <option value="green">Green Theme</option>
-            <option value="pink">Pink Theme</option>
-            <option value="classic">Classic Theme</option>
-          </select>          
-    </div>
 
     <!-- 🔹 Chess Board -->
     <div id="board" class="board mb-4"></div>
@@ -53,12 +41,21 @@
       <div id="move-history" class="move-history"></div>
     </div>
 
-    <main class="d-flex flex-column align-items-center">
-      <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
-        <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen"><span id="fullscreenIcon">⛶</span></button>
-        <button id="historyBtn" class="btn btn-secondary">History</button>
-        <button id="instructionsBtn" class="btn btn-info">Instructions</button>
-        </div>      
+  <main class="d-flex flex-column align-items-center">
+  <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
+    <select id="themeSelect" class="form-select w-auto me-2">
+      <option value="default">Default Theme</option>
+      <option value="dark">Dark Theme</option>
+      <option value="blue">Blue Theme</option>
+      <option value="green">Green Theme</option>
+      <option value="pink">Pink Theme</option>
+      <option value="classic">Classic Theme</option>
+    </select>
+
+    <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen"><span id="fullscreenIcon">⛶</span></button>
+    <button id="historyBtn" class="btn btn-secondary">History</button>
+    <button id="instructionsBtn" class="btn btn-info">Instructions</button>
+  </div>   
       <div id="history" class="alert alert-secondary w-100" style="display:none; max-width: 600px; text-align: left;">
         <strong>History of Chess:</strong><br />
         - Chess originated in northern India in the 6th century as "chaturanga".<br />
