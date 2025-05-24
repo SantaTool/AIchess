@@ -175,10 +175,18 @@ const initialBoard = [
 ];
 
 // Sound placeholders
-const newGameSound = new Audio('audio/board-start.mp3'); // Add your sound file
+const moveSound = new Audio('audio/move-sound.mp3');
+const captureSound = new Audio('audio/capture-sound.mp3');
+const winSound = new Audio('audio/win-sound.mp3');
+const drawSound = new Audio('audio/gamedraw-sound.mp3');
+const newGameSound = new Audio('audio/board-start.mp3');
+const promotionSound = new Audio('audio/promotion-sound.mp3');
 
 function playSound(sound) {
-  if (!audioMuted) sound.play();
+  if (!audioMuted) {
+    sound.currentTime = 0;
+    sound.play();
+  }
 }
 
 // ==== DOM RENDERING FUNCTIONS ====
@@ -258,8 +266,7 @@ window.onload = () => {
   document.getElementById('themeSelect').onchange = (e) => {
     setTheme(e.target.value);
   };
-
-
+};
 </script>
 </body>
 </html>
