@@ -11,27 +11,30 @@
   <link rel="stylesheet" href="lib/chessboardjs/css/chessboard-0.3.0.css" />
   <link rel="stylesheet" href="style.css" />
   <!-- Google Ads placeholder -->
-  <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
-  <header class="themed-header text-white text-center py-3 position-relative">
+  <!--<header class="themed-header text-white text-center py-3 position-relative">-->
+  <header class="themed-header text-center py-3 position-relative" style="background-color: #4B0082; color: white;">
     <h1 class="header-title">Play Online Chess Game Against AI Opponent</h1>
     <!-- Header Ad -->
-    <!--<div class="ad-space ad-header">-->
+    <div class="ad-space ad-header">
       <!-- Google AdSense code here -->
-    <!--</div>-->
+    </div>
   </header>
   <!--
   <div class="container-fluid mt-3">
     <div class="row">
       <aside class="col-12 col-md-2 mb-3 mb-md-0">
         <div class="ad-space ad-sidebar">
+  -->
           <!-- Sidebar Ad -->
+  <!--
         </div>
       </aside>
   -->
   <!-- Empty spacing before the Game board area -->
-  <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap"></div>
+  <div class="mb-3 d-flex justify-content-center gap-1 flex-wrap"></div>
 
     <!-- 🔹 Chess Board -->
     <div id="board" class="board mb-4"></div>
@@ -54,16 +57,6 @@
     </div>
 
   <main class="d-flex flex-column align-items-center">
-  <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
-    <select id="themeSelect" class="form-select w-auto me-2">
-      <option value="default">Default Theme</option>
-      <option value="dark">Dark Theme</option>
-      <option value="blue">Blue Theme</option>
-      <option value="green">Green Theme</option>
-      <option value="pink">Pink Theme</option>
-      <option value="classic">Classic Theme</option>
-    </select>
-
     <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen"><span id="fullscreenIcon">⛶</span></button>
     <button id="historyBtn" class="btn btn-secondary">History</button>
     <button id="instructionsBtn" class="btn btn-info">Instructions</button>
@@ -163,23 +156,6 @@ document.getElementById('fullscreenBtn').onclick = () => {
     document.exitFullscreen().then(() => icon.textContent = '⛶');
   }
 };
-</script>
-<script>
-
-// ==== THEME SWITCHING ====
-
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('themeSelect').onchange = (e) => {
-      setTheme(e.target.value);
-    };
-  });
-
-function setTheme(theme) {
-  document.body.classList.remove('theme-dark', 'theme-blue', 'theme-green', 'theme-pink', 'theme-classic');
-  if (theme !== 'default') {
-    document.body.classList.add(`theme-${theme}`);
-  }
-}
 </script>
 </body>
 </html>
