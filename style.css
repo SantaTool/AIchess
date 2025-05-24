@@ -24,3 +24,23 @@
     display: block !important;
     opacity: 0 !important;
 }
+
+.themed-header {
+  background: linear-gradient(90deg, #2c3e50, #3498db);
+  color: white;
+  padding: 1.5rem 1rem;
+  border-bottom: 4px solid #1abc9c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.themed-header .header-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.ad-space.ad-header {
+  margin-top: 0.5rem;
+  min-height: 60px; /* adjust based on ad size */
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+}
