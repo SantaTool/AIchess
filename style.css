@@ -1,100 +1,26 @@
-/* Chess Board and Info Centering */
-.board,
+.board {
+    width: 400px;
+    margin: auto
+}
+
 .info {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+    width: 400px;
+    margin: auto;
 }
 
-/* Scrollable move history */
 .move-history {
-  max-height: 100px;
-  overflow-y: auto;
-  padding: 0.5rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  background: #fafafa;
+    max-height: 100px;
+    overflow-y: scroll;
 }
 
-/* Ensure chess pieces remain visible and smooth transitions */
+/* Ensure chess piece images are always visible */
 .piece-417db, .board-b72b1 img {
-  visibility: visible !important;
-  opacity: 1 !important;
-  transition: opacity 0.2s;
-  z-index: 10;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: opacity 0.2s;
+    z-index: 10;
 }
-
 .board-b72b1 img[style*="display: none"] {
-  display: block !important;
-  opacity: 0 !important;
-}
-
-/* Header Styling */
-.themed-header {
-  background: linear-gradient(90deg, #2c3e50, #3498db);
-  color: white;
-  padding: 1.5rem 1rem;
-  border-bottom: 4px solid #1abc9c;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.themed-header .header-title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* 🎯 Ad Spaces Styling – Clean & Minimal */
-.ad-space {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 auto;
-}
-
-.ad-space.ad-header {
-  margin-top: 0.5rem;
-  min-height: 60px;
-  text-align: center;
-}
-
-/* Sidebar ad optimized for minimal distraction */
-.ad-sidebar {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 10px;
-}
-
-.compact-ad {
-  max-width: 160px;
-  height: auto;
-}
-
-/* Footer ad – low-impact spacing */
-.ad-footer {
-  padding: 8px 0;
-  background-color: #1f1f1f;
-  color: #ccc;
-  text-align: center;
-}
-
-/* Mobile-first improvements */
-@media (max-width: 767px) {
-  .ad-sidebar {
-    display: none; /* Hide side ads on phones */
-  }
-
-  .ad-footer {
-    padding: 5px 0;
-    font-size: 0.9rem;
-  }
-
-  .board,
-  .info {
-    width: 95%;
-  }
-
-  .themed-header .header-title {
-    font-size: 1.5rem;
-  }
+    display: block !important;
+    opacity: 0 !important;
 }
