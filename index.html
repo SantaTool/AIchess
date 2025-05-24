@@ -259,20 +259,7 @@ window.onload = () => {
     setTheme(e.target.value);
   };
 
-  document.getElementById('instructionsBtn').onclick = () => {
-    const instr = document.getElementById('instructions');
-    const hist = document.getElementById('history');
-    instr.style.display = instr.style.display === 'none' ? 'block' : 'none';
-    if (instr.style.display === 'block') hist.style.display = 'none';
-  };
 
-  document.getElementById('historyBtn').onclick = () => {
-    const instr = document.getElementById('instructions');
-    const hist = document.getElementById('history');
-    hist.style.display = hist.style.display === 'none' ? 'block' : 'none';
-    if (hist.style.display === 'block') instr.style.display = 'none';
-  };
-};
 </script>
 </body>
 </html>
