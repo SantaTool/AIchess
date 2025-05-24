@@ -1,4 +1,4 @@
-# AIchess : Play online Chess Game against AI opponent  
+# aichess : Play online Chess Game against AI opponent  
 This is a web-based chess game that allows you to play against an AI opponent that uses a minimax algorithm with alpha-beta pruning to make its moves. The game is implemented using the following technologies:  
 - JavaScript
 - jQuery
