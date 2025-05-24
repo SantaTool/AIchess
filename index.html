@@ -148,7 +148,8 @@
     document.exitFullscreen().then(() => icon.textContent = '⛶');
   }
 };
-
+</script>
+<script>
 // ==== GLOBAL STATE ====
 
 let audioMuted = false;
@@ -202,12 +203,6 @@ function renderBoard() {
     });
     boardDiv.appendChild(document.createElement("br")); // line break after each row
   });
-}
-
-function updateStatus() {
-  document.getElementById("position-count").textContent = Math.floor(Math.random() * 1000);
-  document.getElementById("time").textContent = (Math.random() * 2).toFixed(2) + "s";
-  document.getElementById("positions-per-s").textContent = Math.floor(Math.random() * 1000);
 }
 
 // ==== THEME SWITCHING ====
