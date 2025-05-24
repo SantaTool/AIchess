@@ -213,7 +213,8 @@ function renderBoard() {
       square.style.lineHeight = "50px";
       square.style.textAlign = "center";
       square.style.fontSize = "24px";
-      square.style.backgroundColor = (rowIndex + colIndex) % 2 === 0 ? "#eee" : "#444";
+      <!--square.style.backgroundColor = (rowIndex + colIndex) % 2 === 0 ? "#eee" : "#444";-->
+      square.classList.add((rowIndex + colIndex) % 2 === 0 ? 'light-square' : 'dark-square');
       square.textContent = cell;
       boardDiv.appendChild(square);
     });
@@ -223,6 +224,14 @@ function renderBoard() {
 
 // ==== THEME SWITCHING ====
 
+function setTheme(theme) {
+  document.body.classList.remove('theme-dark', 'theme-blue', 'theme-green', 'theme-pink', 'theme-classic');
+  if (theme !== 'default') {
+    document.body.classList.add(`theme-${theme}`);
+  }
+}
+
+<!--
 function setTheme(themeName) {
   const boardDiv = document.getElementById("board");
   switch (themeName) {
@@ -245,7 +254,7 @@ function setTheme(themeName) {
       boardDiv.style.backgroundColor = "";
   }
 }
-
+-->
 // ==== INITIAL SETUP ====
 
 window.onload = () => {
