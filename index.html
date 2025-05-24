@@ -12,6 +12,7 @@
   <div class="container my-4">
     <!-- 🔹 Header Title -->
     <h2 class="text-center mb-3">Play Online Chess Game Against AI Opponent</h2>
+    <p id="playerTurn" class="text-center fw-bold"></p>
     
     <!-- 🔹 Control Buttons (Moved to Top) -->
     <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
@@ -50,7 +51,6 @@
     <main class="d-flex flex-column align-items-center">
       <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
         <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen"><span id="fullscreenIcon">⛶</span></button>
-        <p id="playerTurn" class="text-center fw-bold"></p>
         <button id="historyBtn" class="btn btn-secondary">History</button>
         <button id="instructionsBtn" class="btn btn-info">Instructions</button>
         </div>      
@@ -140,7 +140,17 @@
     });
   });
 
-    function updateStatus() {
+    document.getElementById('fullscreenBtn').onclick = () => {
+  const elem = document.documentElement;
+  const icon = document.getElementById('fullscreenIcon');
+  if (!document.fullscreenElement) {
+    elem.requestFullscreen().then(() => icon.textContent = '🡽');
+  } else {
+    document.exitFullscreen().then(() => icon.textContent = '⛶');
+  }
+};
+
+   function updateStatus() {
   document.getElementById("position-count").textContent = Math.floor(Math.random() * 1000);
   document.getElementById("time").textContent = (Math.random() * 2).toFixed(2) + "s";
   document.getElementById("positions-per-s").textContent = Math.floor(Math.random() * 1000);
@@ -257,16 +267,6 @@ window.onload = () => {
     audioMuted = !audioMuted;
     document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
     document.getElementById('audioBtn').title = audioMuted ? 'Unmute Audio' : 'Mute Audio';
-  };
-
-  document.getElementById('fullscreenBtn').onclick = () => {
-    const elem = document.documentElement;
-    const icon = document.getElementById('fullscreenIcon');
-    if (!document.fullscreenElement) {
-      elem.requestFullscreen().then(() => icon.textContent = '🡽');
-    } else {
-      document.exitFullscreen().then(() => icon.textContent = '⛶');
-    }
   };
 
   document.getElementById('themeSelect').onchange = (e) => {
