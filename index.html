@@ -50,6 +50,7 @@
     <main class="d-flex flex-column align-items-center">
       <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
         <button id="fullscreenBtn" class="btn btn-secondary btn-icon" title="Full Screen"><span id="fullscreenIcon">⛶</span></button>
+        <p id="playerTurn" class="text-center fw-bold"></p>
         <button id="historyBtn" class="btn btn-secondary">History</button>
         <button id="instructionsBtn" class="btn btn-info">Instructions</button>
         </div>      
@@ -139,15 +140,12 @@
     });
   });
 
-    document.getElementById('fullscreenBtn').onclick = () => {
-  const elem = document.documentElement;
-  const icon = document.getElementById('fullscreenIcon');
-  if (!document.fullscreenElement) {
-    elem.requestFullscreen().then(() => icon.textContent = '🡽');
-  } else {
-    document.exitFullscreen().then(() => icon.textContent = '⛶');
-  }
-};
+    function updateStatus() {
+  document.getElementById("position-count").textContent = Math.floor(Math.random() * 1000);
+  document.getElementById("time").textContent = (Math.random() * 2).toFixed(2) + "s";
+  document.getElementById("positions-per-s").textContent = Math.floor(Math.random() * 1000);
+  document.getElementById("playerTurn").textContent = `Current Turn: ${currentPlayer.toUpperCase()}`;
+}
 </script>
 <script>
 // ==== GLOBAL STATE ====
