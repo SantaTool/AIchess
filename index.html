@@ -12,8 +12,7 @@
   <div class="container my-4">
     <!-- 🔹 Header Title -->
     <h2 class="text-center mb-3">Play Online Chess Game Against AI Opponent</h2>
-    <p id="playerTurn" class="text-center fw-bold"></p>
-    
+        
     <!-- 🔹 Control Buttons (Moved to Top) -->
     <div class="mb-3 d-flex justify-content-center gap-2 flex-wrap">
       <button id="newGameBtn" class="btn btn-primary">New Game</button>
@@ -150,14 +149,6 @@
   }
 };
 
-   function updateStatus() {
-  document.getElementById("position-count").textContent = Math.floor(Math.random() * 1000);
-  document.getElementById("time").textContent = (Math.random() * 2).toFixed(2) + "s";
-  document.getElementById("positions-per-s").textContent = Math.floor(Math.random() * 1000);
-  document.getElementById("playerTurn").textContent = `Current Turn: ${currentPlayer.toUpperCase()}`;
-}
-</script>
-<script>
 // ==== GLOBAL STATE ====
 
 let audioMuted = false;
