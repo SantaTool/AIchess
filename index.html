@@ -172,5 +172,146 @@
   };
 };
 </script>
+<script>
+// ==== GLOBAL STATE ====
+
+let audioMuted = false;
+let board = [];
+let selected = null;
+let currentPlayer = "white";
+let castlingRights = {
+  white: { kingside: true, queenside: true },
+  black: { kingside: true, queenside: true }
+};
+let enPassantTarget = null;
+
+// Example piece positions (simplified)
+const initialBoard = [
+  ["r", "n", "b", "q", "k", "b", "n", "r"],
+  ["p", "p", "p", "p", "p", "p", "p", "p"],
+  ["", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", ""],
+  ["P", "P", "P", "P", "P", "P", "P", "P"],
+  ["R", "N", "B", "Q", "K", "B", "N", "R"]
+];
+
+// Sound placeholders
+const newGameSound = new Audio('sounds/newgame.mp3'); // Add your sound file
+
+function playSound(sound) {
+  if (!audioMuted) sound.play();
+}
+
+// ==== DOM RENDERING FUNCTIONS ====
+
+function renderBoard() {
+  const boardDiv = document.getElementById("board");
+  boardDiv.innerHTML = ""; // Clear previous board
+
+  board.forEach((row, rowIndex) => {
+    row.forEach((cell, colIndex) => {
+      const square = document.createElement("div");
+      square.className = "square";
+      square.style.width = "50px";
+      square.style.height = "50px";
+      square.style.display = "inline-block";
+      square.style.lineHeight = "50px";
+      square.style.textAlign = "center";
+      square.style.fontSize = "24px";
+      square.style.backgroundColor = (rowIndex + colIndex) % 2 === 0 ? "#eee" : "#444";
+      square.textContent = cell;
+      boardDiv.appendChild(square);
+    });
+    boardDiv.appendChild(document.createElement("br")); // line break after each row
+  });
+}
+
+function updateStatus() {
+  document.getElementById("position-count").textContent = Math.floor(Math.random() * 1000);
+  document.getElementById("time").textContent = (Math.random() * 2).toFixed(2) + "s";
+  document.getElementById("positions-per-s").textContent = Math.floor(Math.random() * 1000);
+}
+
+// ==== THEME SWITCHING ====
+
+function setTheme(themeName) {
+  const boardDiv = document.getElementById("board");
+  switch (themeName) {
+    case "dark":
+      boardDiv.style.backgroundColor = "#1e1e1e";
+      break;
+    case "blue":
+      boardDiv.style.backgroundColor = "#3c8dbc";
+      break;
+    case "green":
+      boardDiv.style.backgroundColor = "#3cba54";
+      break;
+    case "pink":
+      boardDiv.style.backgroundColor = "#f78da7";
+      break;
+    case "classic":
+      boardDiv.style.backgroundColor = "#d2b48c";
+      break;
+    default:
+      boardDiv.style.backgroundColor = "";
+  }
+}
+
+// ==== INITIAL SETUP ====
+
+window.onload = () => {
+  board = JSON.parse(JSON.stringify(initialBoard));
+  renderBoard();
+  updateStatus();
+  document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
+
+  document.getElementById('newGameBtn').onclick = () => {
+    board = JSON.parse(JSON.stringify(initialBoard));
+    selected = null;
+    currentPlayer = "white";
+    castlingRights = { white: { kingside: true, queenside: true }, black: { kingside: true, queenside: true } };
+    enPassantTarget = null;
+    renderBoard();
+    updateStatus();
+    playSound(newGameSound);
+  };
+
+  document.getElementById('audioBtn').onclick = () => {
+    audioMuted = !audioMuted;
+    document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
+    document.getElementById('audioBtn').title = audioMuted ? 'Unmute Audio' : 'Mute Audio';
+  };
+
+  document.getElementById('fullscreenBtn').onclick = () => {
+    const elem = document.documentElement;
+    const icon = document.getElementById('fullscreenIcon');
+    if (!document.fullscreenElement) {
+      elem.requestFullscreen().then(() => icon.textContent = '🡽');
+    } else {
+      document.exitFullscreen().then(() => icon.textContent = '⛶');
+    }
+  };
+
+  document.getElementById('themeSelect').onchange = (e) => {
+    setTheme(e.target.value);
+  };
+
+  document.getElementById('instructionsBtn').onclick = () => {
+    const instr = document.getElementById('instructions');
+    const hist = document.getElementById('history');
+    instr.style.display = instr.style.display === 'none' ? 'block' : 'none';
+    if (instr.style.display === 'block') hist.style.display = 'none';
+  };
+
+  document.getElementById('historyBtn').onclick = () => {
+    const instr = document.getElementById('instructions');
+    const hist = document.getElementById('history');
+    hist.style.display = hist.style.display === 'none' ? 'block' : 'none';
+    if (hist.style.display === 'block') instr.style.display = 'none';
+  };
+};
+</script>  
 </body>
 </html>
