@@ -23,7 +23,6 @@
         
     <!-- 🔹 Control Buttons (Moved to Top) -->
     <div class="mt-4 mb-3 d-flex justify-content-center gap-2 flex-wrap">
-      <button id="newGameBtn" class="btn btn-primary">New Game</button>
       <select id="themeSelect" class="form-select w-auto">
             <option value="default">Default Theme</option>
             <option value="dark">Dark Theme</option>
@@ -31,8 +30,7 @@
             <option value="green">Green Theme</option>
             <option value="pink">Pink Theme</option>
             <option value="classic">Classic Theme</option>
-          </select>
-          <button id="audioBtn" class="btn btn-warning btn-icon" title="Mute/Unmute Audio"><span id="audioIcon">🔊</span></button>
+          </select>          
     </div>
 
     <!-- 🔹 Chess Board -->
@@ -91,7 +89,7 @@
         - Use the New Game button to restart.<br />
         - Use the Full Screen button for immersive play.<br />
         - Change the theme using the dropdown.<br />
-        - Mute/unmute sounds with the audio button.<br /><br />
+        - This version has no sound effects for more peaceful thinking and concentration.<br /><br />
 
         <strong>General Chess Rules:</strong><br />
         - Each player starts with 16 pieces.<br />
@@ -158,69 +156,6 @@
 };
 </script>
 <script>
-// ==== GLOBAL STATE ====
-
-let audioMuted = false;
-let board = [];
-let selected = null;
-let currentPlayer = "white";
-let castlingRights = {
-  white: { kingside: true, queenside: true },
-  black: { kingside: true, queenside: true }
-};
-let enPassantTarget = null;
-
-// Example piece positions (simplified)
-const initialBoard = [
-  ["r", "n", "b", "q", "k", "b", "n", "r"],
-  ["p", "p", "p", "p", "p", "p", "p", "p"],
-  ["", "", "", "", "", "", "", ""],
-  ["", "", "", "", "", "", "", ""],
-  ["", "", "", "", "", "", "", ""],
-  ["", "", "", "", "", "", "", ""],
-  ["P", "P", "P", "P", "P", "P", "P", "P"],
-  ["R", "N", "B", "Q", "K", "B", "N", "R"]
-];
-
-// Sound placeholders
-const moveSound = new Audio('audio/move-sound.mp3');
-const captureSound = new Audio('audio/capture-sound.mp3');
-const winSound = new Audio('audio/win-sound.mp3');
-const drawSound = new Audio('audio/gamedraw-sound.mp3');
-const newGameSound = new Audio('audio/board-start.mp3');
-const promotionSound = new Audio('audio/promotion-sound.mp3');
-
-function playSound(sound) {
-  if (!audioMuted) {
-    sound.currentTime = 0;
-    sound.play();
-  }
-}
-
-// ==== DOM RENDERING FUNCTIONS ====
-
-function renderBoard() {
-  const boardDiv = document.getElementById("board");
-  boardDiv.innerHTML = ""; // Clear previous board
-
-  board.forEach((row, rowIndex) => {
-    row.forEach((cell, colIndex) => {
-      const square = document.createElement("div");
-      square.className = "square";
-      square.style.width = "50px";
-      square.style.height = "50px";
-      square.style.display = "inline-block";
-      square.style.lineHeight = "50px";
-      square.style.textAlign = "center";
-      square.style.fontSize = "24px";
-      <!--square.style.backgroundColor = (rowIndex + colIndex) % 2 === 0 ? "#eee" : "#444";-->
-      square.classList.add((rowIndex + colIndex) % 2 === 0 ? 'light-square' : 'dark-square');
-      square.textContent = cell;
-      boardDiv.appendChild(square);
-    });
-    boardDiv.appendChild(document.createElement("br")); // line break after each row
-  });
-}
 
 // ==== THEME SWITCHING ====
 
@@ -231,55 +166,13 @@ function setTheme(theme) {
   }
 }
 
-<!--
-function setTheme(themeName) {
-  const boardDiv = document.getElementById("board");
-  switch (themeName) {
-    case "dark":
-      boardDiv.style.backgroundColor = "#1e1e1e";
-      break;
-    case "blue":
-      boardDiv.style.backgroundColor = "#3c8dbc";
-      break;
-    case "green":
-      boardDiv.style.backgroundColor = "#3cba54";
-      break;
-    case "pink":
-      boardDiv.style.backgroundColor = "#f78da7";
-      break;
-    case "classic":
-      boardDiv.style.backgroundColor = "#d2b48c";
-      break;
-    default:
-      boardDiv.style.backgroundColor = "";
-  }
-}
--->
 // ==== INITIAL SETUP ====
 
 window.onload = () => {
   board = JSON.parse(JSON.stringify(initialBoard));
   renderBoard();
   updateStatus();
-  document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
-
-  document.getElementById('newGameBtn').onclick = () => {
-    board = JSON.parse(JSON.stringify(initialBoard));
-    selected = null;
-    currentPlayer = "white";
-    castlingRights = { white: { kingside: true, queenside: true }, black: { kingside: true, queenside: true } };
-    enPassantTarget = null;
-    renderBoard();
-    updateStatus();
-    playSound(newGameSound);
-  };
-
-  document.getElementById('audioBtn').onclick = () => {
-    audioMuted = !audioMuted;
-    document.getElementById('audioIcon').textContent = audioMuted ? '🔇' : '🔊';
-    document.getElementById('audioBtn').title = audioMuted ? 'Unmute Audio' : 'Mute Audio';
-  };
-
+  
   document.getElementById('themeSelect').onchange = (e) => {
     setTheme(e.target.value);
   };
