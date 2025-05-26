@@ -19,7 +19,7 @@ The project consists of the following files:
 - index.html: The main HTML file that contains the chessboard and game information, also some of the page functions.
 - style.css: The CSS file that styles the chessboard and game information.
 - script.js: The JavaScript file that implements the game logic, including the minimax algorithm with alpha-beta pruning.
-- lib/: A directory that contains the Chess.js and Chessboard.js libraries, as well as the jQuery library as well as css files.
+- lib/: A directory that contains the Chess.js and Chessboard.js libraries, as well as the jQuery library as well as css files mainly for the Game play and chess-board area.
 - img/: A directory that contains chessboard pieces images. 
 
 ## Credits
