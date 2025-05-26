@@ -8,6 +8,18 @@ This is a web-based chess game that allows you to play against an AI opponent th
 ## Demonstration
 [aichess.cooo.in](https://aichess.cooo.in/)
 
+## Features
+
+- 🤖 Play against an AI
+- 🎚️ Difficulty level selection (1 to 5) for AI opponent
+- 📊 Game statistics and analysis
+- 🎨 Multiple theme options to select preferred backgrund
+- 🎮 Chessboard theme change options
+- 📱 Responsive design for mobile and desktop
+- ♟️ Drag and drop piece movement
+- ⏱️ Game timer
+- 🔄 Move history
+
 ## How to play
 To play the game, simply open the index.html file in a web browser. The chessboard will be displayed, and you can make moves by drag and drop on a piece on the square where you want to move it. The AI opponent will then make its move, and the game will continue until checkmate, stalemate, or a draw occurs.
 
